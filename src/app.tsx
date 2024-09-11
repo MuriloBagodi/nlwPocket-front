@@ -12,7 +12,11 @@ import {
 } from './components/ui/dialog'
 import { Label } from './components/ui/label'
 import { Input } from './components/ui/input'
-import { RadioGroup, RadioGroupItem } from './components/ui/radio-group'
+import {
+  RadioGroup,
+  RadioGroupIndicator,
+  RadioGroupItem,
+} from './components/ui/radio-group'
 
 export function App() {
   return (
@@ -34,7 +38,7 @@ export function App() {
       </div>
 
       <DialogContent>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 h-full">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between ">
               <DialogTitle>Cadastrar Meta</DialogTitle>
@@ -47,10 +51,10 @@ export function App() {
               praticando toda semana.
             </DialogDescription>
           </div>
-          <form action="" className="flex-1 flex-col justify-between">
+          <form action="" className="flex flex-col justify-between flex-1">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
-                <Label htmlFor="title">Qual a atividade ?</Label>
+                <Label htmlFor="title">Qual a atividade?</Label>
                 <Input
                   placeholder="Praticar exercícios, meditar, etc...."
                   autoFocus
@@ -58,13 +62,62 @@ export function App() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <Label htmlFor="title">Quantas vezes na semana ?</Label>
+                <Label htmlFor="title">Quantas vezes na semana?</Label>
                 <RadioGroup>
-                  <RadioGroupItem value="1">1x na semana</RadioGroupItem>
+                  <RadioGroupItem value="1">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      1x na semana
+                    </span>
+                    <span className="text-lg leading-none">🥱</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="2">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      2x na semana
+                    </span>
+                    <span className="text-lg leading-none">🙂</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="3">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      3x na semana
+                    </span>
+                    <span className="text-lg leading-none">😎</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="4">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      4x na semana
+                    </span>
+                    <span className="text-lg leading-none">😜</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="5">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      5x na semana
+                    </span>
+                    <span className="text-lg leading-none">🤨</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="6">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      6x na semana
+                    </span>
+                    <span className="text-lg leading-none">🤯</span>
+                  </RadioGroupItem>
+                  <RadioGroupItem value="7">
+                    <RadioGroupIndicator />
+                    <span className="text-zinc-300 text-sm font-medium leading-none">
+                      Todos os dias da semana
+                    </span>
+                    <span className="text-lg leading-none">🔥</span>
+                  </RadioGroupItem>
                 </RadioGroup>
               </div>
             </div>
 
+            {/* Botões no rodapé */}
             <div className="mt-auto flex items-center gap-3">
               <DialogClose asChild>
                 <Button type="button" className="flex-1" variant="secondary">
