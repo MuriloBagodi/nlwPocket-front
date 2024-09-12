@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        'available': '-moz-available',
+        'available-webkit': '-webkit-fill-available',
+      }
+    },
   },
   plugins: [],
 }
