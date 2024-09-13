@@ -9,6 +9,7 @@ import { getSummary } from '../http/get-summary'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import ptbr from 'dayjs/locale/pt-br'
+import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptbr)
 
@@ -24,7 +25,7 @@ export function Summary() {
   }
 
   const firsDayOfWeek = dayjs().startOf('week').format('D MMM')
-  const endDayOfWeek = dayjs().endOf('week').format('D MMM')
+  const lastDayOfWeek = dayjs().endOf('week').format('D MMM')
 
   const completedPercentage = Math.round((data?.completed * 100) / data?.total)
 
@@ -33,7 +34,9 @@ export function Summary() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <InOrbitLogo />
-          <span className="text-lg font-semibold">{firsDayOfWeek}</span>
+          <span className="text-lg font-semibold capitalize">
+            {firsDayOfWeek} - {lastDayOfWeek}
+          </span>
         </div>
 
         <DialogTrigger asChild>
@@ -61,24 +64,7 @@ export function Summary() {
 
         <Separator />
 
-        <div className="flex flex-wrap p-3">
-          <OutlineButton>
-            <Plus className="size-4 text-zinc-400" />
-            Meditar
-          </OutlineButton>
-          <OutlineButton>
-            <Plus className="size-4 text-zinc-400" />
-            Nadar
-          </OutlineButton>
-          <OutlineButton>
-            <Plus className="size-4 text-zinc-400" />
-            Estudar
-          </OutlineButton>
-          <OutlineButton>
-            <Plus className="size-4 text-zinc-400" />
-            Dormir cedo
-          </OutlineButton>
-        </div>
+        <PendingGoals />
 
         <div className="flex flex-col gap-6">
           <h2 className="text-xl font-medium">Sua Semana</h2>
