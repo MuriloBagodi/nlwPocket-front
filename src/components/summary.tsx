@@ -4,7 +4,6 @@ import { DialogTrigger } from './ui/dialog'
 import { InOrbitLogo } from './in-orbit-logo'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
-import { OutlineButton } from './ui/outline-button'
 import { getSummary } from '../http/get-summary'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
@@ -71,11 +70,14 @@ export function Summary() {
 
           {Object.entries(data.goalsPerDay).map(([date, goals]) => {
             const weekDay = dayjs(date).format('dddd')
+            const today = dayjs().format('dddd')
             const formattedDate = dayjs(date).format('D[ de ]MMM')
             return (
               <div key={date} className="flex flex-col gap-4">
                 <h3 className="font-medium">
-                  <span className="capitalize">{weekDay}</span>
+                  <span className="capitalize">
+                    {weekDay === today ? 'Hoje' : weekDay}
+                  </span>
                   <span className="text-zinc-400"> ({formattedDate})</span>
                 </h3>
                 {/* TODO: Fazer btn de Desfazer que consta no Figma */}
